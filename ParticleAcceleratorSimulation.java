@@ -2,7 +2,7 @@ package com.jakak.particleAcceleratorSimulationClientServerVer2;
 
 import java.util.Arrays;
 import java.util.List;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class ParticleAcceleratorSimulation {
@@ -15,8 +15,8 @@ public class ParticleAcceleratorSimulation {
 	}
 	
 	public void startSimulation() {
-		String dateString = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-		String logFilePath = "sensor_data_log_" + dateString + ".txt";
+		String dateTimeString = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-SS"));
+		String logFilePath = "sensor_data_log_" + dateTimeString + ".txt";
 		
 		new Thread(new ArchivingService(5000, logFilePath)).start();
 		

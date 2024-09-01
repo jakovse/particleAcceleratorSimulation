@@ -59,13 +59,17 @@ public class OperatorClient extends Application {
         grid.add(new Label("System Status:"), 0, 2);
         grid.add(overallIndicator, 1, 2);
         
-        Button stopButton = new Button("Stop All Measurements");
-        stopButton.setOnAction(e -> stopAllMeasurements());
-        grid.add(stopButton, 0, 3);
+        //Button stopButton = new Button("Stop All Measurements");
+        //stopButton.setOnAction(e -> stopAllMeasurements());
+        //grid.add(stopButton, 0, 3);
 
         Scene scene = new Scene(grid, 400, 200);
         primaryStage.setScene(scene);
         primaryStage.show();
+        
+        primaryStage.setOnCloseRequest(event -> {
+        	Platform.exit();
+        });
 
         // Connect to the MonitoringService
         new Thread(() -> connectToMonitoringService("localhost", 5001)).start();

@@ -77,7 +77,6 @@ public class MonitoringService implements Runnable {
 		while (true) {
 			try {
 				Socket clientSocket = serverSocket.accept();
-				System.out.println(clientSocket.getOutputStream());
 				PrintWriter writer = new PrintWriter(clientSocket.getOutputStream(), true);
 				clientWriters.add(writer);
 			} catch (Exception e) {
